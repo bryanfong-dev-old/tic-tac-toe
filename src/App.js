@@ -1,10 +1,10 @@
 import React from "react";
-import BoardContainer from './containers/BoardContainer'
+import BoardContainer from './containers/BoardContainer';
 
 
 const App = () => (
-  <div>
-    <h1>Tic Tac Toe</h1>
+  <div className="container">
+    <h1 id="title">Tic Tac Toe</h1>
     <BoardContainer />
   </div>
 )
