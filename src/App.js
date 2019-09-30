@@ -1,3 +1,13 @@
+/**
+ * ************************************
+ *
+ * @module  App.jsx
+ * @description 
+ *
+ * ************************************
+ */
+
+
 import React from "react";
 import BoardContainer from './containers/BoardContainer';
 import ScoreContainer from "./containers/ScoreContainer";

@@ -1,3 +1,12 @@
+/**
+ * ************************************
+ *
+ * @module gameReducer
+ * @description reducer for the game
+ *
+ * ************************************
+ */
+
 import * as types from '../actions/actionTypes';
 import { switchCase } from '@babel/types';
 
