@@ -25,7 +25,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class BoardContainer extends React.Component {
-
   componentDidUpdate() {
     if (this.props.active && this.props.moves >= 3) {
       this.props.checkForWinner();
