@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
 
 class BoardContainer extends React.Component {
   render({ board } = this.props) {
-    const boxes = board.map((value, index) => <Box key={index} value={value} />)
+    const boxes = board.map((val, i) => <Box key={i} i={i} val={val} />)
 
     return (
       <div id="board">

@@ -9,9 +9,9 @@
 
 import React from 'react';
 
-const Box = ({ value }) => (
+const Box = ({ val, i }) => (
   <button className="box">
-    {value}
+    {val}
   </button>
 )
 

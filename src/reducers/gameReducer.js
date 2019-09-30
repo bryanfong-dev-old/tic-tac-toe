@@ -10,7 +10,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  board: ['X', 'O', '', 'X', '', 'X', '', '', 'X']
+  board: ['', '', '', '', '', '', '', '', '']
 }
 
 const gameReducer = (state = initialState, action) => {
