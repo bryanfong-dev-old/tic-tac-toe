@@ -9,9 +9,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Score from '../components/Score';
 import * as actions from '../actions/actions';
+import Score from '../components/Score';
+import Button from '../components/Button';
 import GameMessage from '../components/GameMessage';
+import PropTypes from 'prop-types';
 
 const mapStateToProps = store => (
   {
@@ -37,15 +39,22 @@ class ScoreContainer extends React.Component {
           {winner === "" && <GameMessage message={turn + '\'s Turn!'} />}
         </div>
         <div id="score">
-          <Score name="P1" score={p1} />
-          <Score name="CPU" score={cpu} />
+          <Score player="P1" score={p1} />
+          <Score player="CPU" score={cpu} />
         </div>
-        {winner !== "" && <button onClick={() => newGame()}>Play Again</button>}
+        {winner !== "" && <Button text="Play Again" func={newGame} />}
       </div>
     );
   }
 }
 
+ScoreContainer.propTypes = {
+  p1: PropTypes.number,
+  cpu: PropTypes.number,
+  winner: PropTypes.string,
+  turn: PropTypes.string,
+  newgame: PropTypes.func,
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreContainer);

@@ -8,11 +8,17 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types'
 
-const Score = ({ name, score }) => (
+const Score = ({ player, score }) => (
   <div>
-    <h2>{name} : {score}</h2>
+    <h2>{player} : {score}</h2>
   </div>
 )
+
+Score.propTypes = {
+  player: PropTypes.string,
+  score: PropTypes.number,
+}
 
 export default Score;

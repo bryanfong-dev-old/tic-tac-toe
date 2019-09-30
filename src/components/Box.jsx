@@ -8,11 +8,18 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types'
 
-const Box = ({ val, i, placeMove }) => (
-  <button className="box" index={i} onClick={() => placeMove(i)}>
+const Box = ({ val, index, placeMove }) => (
+  <button className="box" index={index} onClick={() => placeMove(index)}>
     {val}
   </button>
 )
+
+Box.propTypes = {
+  val: PropTypes.string,
+  i: PropTypes.number,
+  placeMove: PropTypes.func,
+}
 
 export default Box;

@@ -11,6 +11,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import Box from '../components/Box';
+import PropTypes from 'prop-types';
 
 const mapStateToProps = store => ({
   board: store.game.board,
@@ -33,8 +34,8 @@ class BoardContainer extends React.Component {
   }
 
   render({ board, placeMove } = this.props) {
-    const boxes = board.map((val, i) =>
-      <Box placeMove={placeMove} key={i} i={i} val={val} />
+    const boxes = board.map((val, index) =>
+      <Box placeMove={placeMove} key={index} index={index} val={val} />
     )
 
     return (
@@ -43,6 +44,15 @@ class BoardContainer extends React.Component {
       </div>
     )
   }
+}
+
+BoardContainer.propTypes = {
+  board: PropTypes.array,
+  active: PropTypes.bool,
+  moves: PropTypes.number,
+  placeMove: PropTypes.func,
+  checkForWinner: PropTypes.func,
+  checkForDraw: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);
