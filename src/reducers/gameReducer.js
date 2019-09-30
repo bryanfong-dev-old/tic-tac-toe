@@ -8,6 +8,7 @@
  */
 
 import * as types from '../actions/actionTypes';
+import checkWinner from '../utils/checkWinner';
 
 const initialState = {
   board: ['', '', '', '', '', '', '', '', ''],
@@ -15,34 +16,23 @@ const initialState = {
   turn: 'O',
   winner: '',
   moves: 0,
-}
-
-const winCombos = [[0, 1, 2],
-[3, 4, 5],
-[6, 7, 8],
-[0, 3, 6],
-[1, 4, 7],
-[2, 5, 8],
-[0, 4, 8],
-[2, 4, 6]
-]
-
-const checkWinner = (board) => {
-  for (let i = 0; i < winCombos.length; i++) {
-    let combo = winCombos[i];
-    if (board[combo[0]] !== '' || board[combo[1]] !== '' || board[combo[2]] !== '') {
-      if (board[combo[0]] === board[combo[1]] && board[combo[1]] === board[combo[2]]) {
-        return board[combo[0]];
-      }
-    }
-  }
-  return;
+  p1_score: 0,
+  cpu_score: 0,
 }
 
 const gameReducer = (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
+    case types.NEW_GAME:
+      newState = JSON.parse(JSON.stringify(state));
+      newState.board = ['', '', '', '', '', '', '', '', ''];
+      newState.active = true;
+      newState.turn = 'O';
+      newState.winner = '';
+      newState.moves = 0;
+      return newState;
+
     case types.PLACE_MOVE:
       newState = JSON.parse(JSON.stringify(state));
       const index = action.payload;
@@ -50,7 +40,6 @@ const gameReducer = (state = initialState, action) => {
         newState.board[index] = state.turn
         newState.turn = newState.turn === 'O' ? "X" : "O";
         newState.moves += 1;
-        console.log(newState);
         return newState;
       } else {
         return state;
@@ -59,9 +48,9 @@ const gameReducer = (state = initialState, action) => {
     case types.CHECK_WINNER:
       if (checkWinner(state.board)) {
         if (checkWinner(state.board) === "X") {
-          return { ...state, winner: "X", active: false }
-        } else {
-          return { ...state, winner: "O", active: false }
+          return { ...state, winner: "X", active: false, cpu_score: state.cpu_score + 1 }
+        } else if (checkWinner(state.board) === "O") {
+          return { ...state, winner: "O", active: false, p1_score: state.p1_score + 1 }
         }
       } else {
         return state;

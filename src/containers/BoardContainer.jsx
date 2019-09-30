@@ -14,6 +14,8 @@ import Box from '../components/Box';
 
 const mapStateToProps = store => ({
   board: store.game.board,
+  active: store.game.active,
+  moves: store.game.moves,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -25,15 +27,15 @@ const mapDispatchToProps = dispatch => ({
 class BoardContainer extends React.Component {
 
   componentDidUpdate() {
-    this.props.checkWinner();
-    this.props.checkForDraw();
+    if (this.props.active && this.props.moves >= 3) {
+      this.props.checkWinner();
+      this.props.checkForDraw();
+    }
   }
 
   render({ board, placeMove } = this.props) {
     const boxes = board.map((val, i) =>
-      <Box placeMove={placeMove}
-        key={i} i={i} val={val}
-      />
+      <Box placeMove={placeMove} key={i} i={i} val={val} />
     )
 
     return (

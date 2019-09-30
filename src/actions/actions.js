@@ -22,3 +22,7 @@ export const checkWinner = () => ({
 export const checkForDraw = () => ({
   type: types.CHECK_FOR_DRAW,
 })
+
+export const newGame = () => ({
+  type: types.NEW_GAME,
+})

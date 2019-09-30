@@ -10,20 +10,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Score from '../components/Score';
+import * as actions from '../actions/actions';
 import GameMessage from '../components/GameMessage';
 
 const mapStateToProps = store => (
   {
-    p1: store.score.p1,
-    cpu: store.score.cpu,
+    p1: store.game.p1_score,
+    cpu: store.game.cpu_score,
     winner: store.game.winner,
     turn: store.game.turn,
   }
 )
 
+const mapDispatchToProps = dispatch => ({
+  newGame: () => dispatch(actions.newGame()),
+})
 
 class ScoreContainer extends React.Component {
-  render({ p1, cpu, winner, turn } = this.props) {
+  render({ p1, cpu, winner, turn, newGame } = this.props) {
     return (
       <div id="game-info">
         <div id="message">
@@ -36,6 +40,7 @@ class ScoreContainer extends React.Component {
           <Score name="P1" score={p1} />
           <Score name="CPU" score={cpu} />
         </div>
+        {winner !== "" && <button onClick={() => newGame()}>Play Again</button>}
       </div>
     );
   }
@@ -43,4 +48,4 @@ class ScoreContainer extends React.Component {
 
 
 
-export default connect(mapStateToProps)(ScoreContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreContainer);
