@@ -9,8 +9,8 @@
 
 import React from 'react';
 
-const Box = ({ val, i }) => (
-  <button className="box">
+const Box = ({ val, i, placeMove }) => (
+  <button className="box" index={i} onClick={() => placeMove(i)}>
     {val}
   </button>
 )
