@@ -14,3 +14,7 @@ export const placeMove = (index) => ({
   type: types.PLACE_MOVE,
   payload: index,
 })
+
+export const checkWinner = () => ({
+  type: types.CHECK_WINNER
+})

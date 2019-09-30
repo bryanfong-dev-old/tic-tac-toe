@@ -35,22 +35,32 @@ const checkWinner = (board) => {
       }
     }
   }
-  return ''
+  return;
 }
 
 const gameReducer = (state = initialState, action) => {
+  let newState;
+
   switch (action.type) {
-
     case types.PLACE_MOVE:
-      const newState = JSON.parse(JSON.stringify(state));
+      newState = JSON.parse(JSON.stringify(state));
       const index = action.payload;
-
       if (newState.board[index] === '' && state.active) {
         newState.board[index] = state.turn
         newState.turn = newState.turn === 'O' ? "X" : "O";
-        if (checkWinner(newState.board) !== '') newState.active = false;
-        console.log('checkWinner(newState.board): ', checkWinner(newState.board));
         return newState;
+      } else {
+        return state;
+      }
+
+    case types.CHECK_WINNER:
+      // newState = JSON.parse(JSON.stringify(state));
+      if (checkWinner(state.board)) {
+        if (checkWinner(state.board) === "X") {
+          return { ...state, winner: "X", active: false }
+        } else {
+          return { ...state, winner: "O", active: false }
+        }
       } else {
         return state;
       }

@@ -18,9 +18,15 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   placeMove: (index) => dispatch(actions.placeMove(index)),
+  checkWinner: () => dispatch(actions.checkWinner()),
 })
 
 class BoardContainer extends React.Component {
+
+  componentDidUpdate() {
+    this.props.checkWinner();
+  }
+
   render({ board, placeMove } = this.props) {
     const boxes = board.map((val, i) =>
       <Box placeMove={placeMove}
