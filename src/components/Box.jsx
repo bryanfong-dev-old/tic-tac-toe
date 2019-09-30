@@ -18,7 +18,7 @@ const Box = ({ val, index, placeMove }) => (
 
 Box.propTypes = {
   val: PropTypes.string,
-  i: PropTypes.number,
+  index: PropTypes.number,
   placeMove: PropTypes.func,
 }
 

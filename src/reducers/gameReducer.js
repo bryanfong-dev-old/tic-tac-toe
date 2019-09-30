@@ -22,6 +22,7 @@ const initialState = {
 
 const gameReducer = (state = initialState, action) => {
   let newState;
+  let index;
 
   switch (action.type) {
     case types.NEW_GAME:
@@ -35,7 +36,7 @@ const gameReducer = (state = initialState, action) => {
 
     case types.PLACE_MOVE:
       newState = JSON.parse(JSON.stringify(state));
-      const index = action.payload;
+      index = action.payload;
       if (newState.board[index] === '' && state.active) {
         newState.board[index] = state.turn
         newState.turn = newState.turn === 'O' ? "X" : "O";
@@ -57,7 +58,7 @@ const gameReducer = (state = initialState, action) => {
       }
 
     case types.CHECK_FOR_DRAW:
-      if (state.moves === 9) {
+      if (state.moves === 9 && !checkWinner(state.board)) {
         return { ...state, winner: "Tie", active: false }
       }
 
