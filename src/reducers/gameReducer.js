@@ -20,10 +20,15 @@ const gameReducer = (state = initialState, action) => {
     case types.PLACE_MOVE:
       const newState = JSON.parse(JSON.stringify(state));
       const index = action.payload;
+
       console.log(index);
-      newState.board[index] = state.turn
-      console.log(newState.board);
-      return newState;
+      if (newState.board[index] === '') {
+        newState.board[index] = state.turn
+        newState.turn = newState.turn === 'O' ? "X" : "O";
+        return newState;
+      } else {
+        return state;
+      }
 
     default:
       return state;
