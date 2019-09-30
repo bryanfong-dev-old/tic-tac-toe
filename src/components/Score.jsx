@@ -9,9 +9,9 @@
 
 import React from 'react';
 
-const Score = () => (
+const Score = ({ name, score }) => (
   <div>
-    <h2>Name : 1</h2>
+    <h2>{name} : {score}</h2>
   </div>
 )
 

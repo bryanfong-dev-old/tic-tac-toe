@@ -8,14 +8,27 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import Score from '../components/Score';
 
-const ScoreContainer = () => (
-  <div id="score">
-    <Score />
-    <Score />
-  </div>
-);
+const mapStateToProps = store => (
+  {
+    p1: store.score.p1,
+    cpu: store.score.cpu,
+  }
+)
+
+class ScoreContainer extends React.Component {
+  render() {
+    return (
+      <div id="score">
+        <Score name="P1" score={this.props.p1} />
+        <Score name="CPU" score={this.props.cpu} />
+      </div>
+    );
+  }
+}
 
 
-export default ScoreContainer;
+
+export default connect(mapStateToProps)(ScoreContainer);

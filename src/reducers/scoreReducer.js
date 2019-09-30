@@ -1,8 +1,8 @@
 /**
  * ************************************
  *
- * @module gameReducer
- * @description reducer for the game
+ * @module scoreReducer
+ * @description reducer for the score
  *
  * ************************************
  */
@@ -10,10 +10,11 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  board: ['X', 'O', '', 'X', '', 'X', '', '', 'X']
+  p1: 0,
+  cpu: 0,
 }
 
-const gameReducer = (state = initialState, action) => {
+const scoreReducer = (state = initialState, action) => {
   switch (action.type) {
 
     default:
@@ -21,4 +22,4 @@ const gameReducer = (state = initialState, action) => {
   }
 }
 
-export default gameReducer;
+export default scoreReducer;

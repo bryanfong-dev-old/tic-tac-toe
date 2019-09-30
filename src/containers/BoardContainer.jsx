@@ -7,28 +7,20 @@
  * ************************************
  */
 
-
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import Box from '../components/Box';
 
-const mapStateToProps = store => (
-  {
-    board: store.game.board,
-  }
-)
+const mapStateToProps = store => ({
+  board: store.game.board,
+})
 
-const mapDispatchToProps = dispatch => (
-  {
+const mapDispatchToProps = dispatch => ({
 
-  }
-)
+})
 
 class BoardContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const boxes = this.props.board.map((value, index) => <Box key={index} value={value} />)
 
