@@ -20,7 +20,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   placeMove: (index) => dispatch(actions.placeMove(index)),
-  checkWinner: () => dispatch(actions.checkWinner()),
+  checkForWinner: () => dispatch(actions.checkForWinner()),
   checkForDraw: () => dispatch(actions.checkForDraw()),
 })
 
@@ -28,7 +28,7 @@ class BoardContainer extends React.Component {
 
   componentDidUpdate() {
     if (this.props.active && this.props.moves >= 3) {
-      this.props.checkWinner();
+      this.props.checkForWinner();
       this.props.checkForDraw();
     }
   }

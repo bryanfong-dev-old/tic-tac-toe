@@ -8,7 +8,7 @@ body {
 
 .container {
   width: 500px;
-  padding: 100px;
+  padding: 50px;
   padding-bottom: 0;
   height: calc(100% - 100px);
   text-align: center;

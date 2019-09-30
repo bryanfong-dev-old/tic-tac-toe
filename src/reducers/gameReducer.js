@@ -45,7 +45,7 @@ const gameReducer = (state = initialState, action) => {
         return state;
       }
 
-    case types.CHECK_WINNER:
+    case types.CHECK_FOR_WINNER:
       if (checkWinner(state.board)) {
         if (checkWinner(state.board) === "X") {
           return { ...state, winner: "X", active: false, cpu_score: state.cpu_score + 1 }
