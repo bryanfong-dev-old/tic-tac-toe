@@ -1,3 +1,12 @@
+/**
+ * ************************************
+ *
+ * @module  Score
+ * @description presentation component that displays the scores for both players
+ *
+ * ************************************
+ */
+
 import React from 'react';
 
 const Score = () => (

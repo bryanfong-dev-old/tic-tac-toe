@@ -23,6 +23,8 @@ body {
 
 #board {
   width: 300px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #score {
@@ -35,7 +37,7 @@ body {
 .box {
   width: 100px;
   height: 100px;
-  font-size: 50px;
+  font-size: 20px;
   background: none;
   outline: none;
 }
