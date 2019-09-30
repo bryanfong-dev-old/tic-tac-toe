@@ -27,9 +27,14 @@ body {
   flex-wrap: wrap;
 }
 
-#score {
+#game-info {
   width: 300px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#score {
   display: flex;
   justify-content: space-around;
 }

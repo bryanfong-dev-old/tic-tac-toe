@@ -10,10 +10,11 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  board: ['X', '', '', '', '', '', '', '', ''],
+  board: ['', '', '', '', '', '', '', '', ''],
   active: true,
   turn: 'O',
   winner: '',
+  moves: 0,
 }
 
 const winCombos = [[0, 1, 2],
@@ -48,13 +49,14 @@ const gameReducer = (state = initialState, action) => {
       if (newState.board[index] === '' && state.active) {
         newState.board[index] = state.turn
         newState.turn = newState.turn === 'O' ? "X" : "O";
+        newState.moves += 1;
+        console.log(newState);
         return newState;
       } else {
         return state;
       }
 
     case types.CHECK_WINNER:
-      // newState = JSON.parse(JSON.stringify(state));
       if (checkWinner(state.board)) {
         if (checkWinner(state.board) === "X") {
           return { ...state, winner: "X", active: false }
@@ -63,6 +65,11 @@ const gameReducer = (state = initialState, action) => {
         }
       } else {
         return state;
+      }
+
+    case types.CHECK_FOR_DRAW:
+      if (state.moves === 9) {
+        return { ...state, winner: "Tie", active: false }
       }
 
     default:

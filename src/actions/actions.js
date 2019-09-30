@@ -16,5 +16,9 @@ export const placeMove = (index) => ({
 })
 
 export const checkWinner = () => ({
-  type: types.CHECK_WINNER
+  type: types.CHECK_WINNER,
+})
+
+export const checkForDraw = () => ({
+  type: types.CHECK_FOR_DRAW,
 })
