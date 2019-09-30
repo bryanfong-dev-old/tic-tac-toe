@@ -21,8 +21,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class BoardContainer extends React.Component {
-  render() {
-    const boxes = this.props.board.map((value, index) => <Box key={index} value={value} />)
+  render({ board } = this.props) {
+    const boxes = board.map((value, index) => <Box key={index} value={value} />)
 
     return (
       <div id="board">

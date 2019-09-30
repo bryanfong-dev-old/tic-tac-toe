@@ -19,11 +19,11 @@ const mapStateToProps = store => (
 )
 
 class ScoreContainer extends React.Component {
-  render() {
+  render({ p1, cpu } = this.props) {
     return (
       <div id="score">
-        <Score name="P1" score={this.props.p1} />
-        <Score name="CPU" score={this.props.cpu} />
+        <Score name="P1" score={p1} />
+        <Score name="CPU" score={cpu} />
       </div>
     );
   }
