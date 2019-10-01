@@ -30,19 +30,18 @@ const mapDispatchToProps = dispatch => ({
 
 class BoardContainer extends React.Component {
   componentDidUpdate() {
-    if (this.props.active) {
-      //if there are 2 or more moves made, then check for winner
-      if (this.props.moves >= 3) {
-        const winner = checkWinner(this.props.board)
+    const { active, moves, board, turn } = this.props;
+
+    if (active) {
+      if (moves >= 3) {
+        const winner = checkWinner(board)
         this.props.declareWinner(winner);
       }
-      //find cpu's next month and place marker for it when it is X's turn 
-      if (this.props.turn === 'X') {
-        const index = cpuNextMove(this.props.board);
+      if (turn === 'X') {
+        const index = cpuNextMove(board);
         this.props.placeMarker(index);
       }
-      //if 9 moves are made, check for a draw
-      if (this.props.moves === 9) {
+      if (moves === 9) {
         this.props.checkForDraw();
       }
     }
