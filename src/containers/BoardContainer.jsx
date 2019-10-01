@@ -12,11 +12,13 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import Box from '../components/Box';
 import PropTypes from 'prop-types';
+import cpuNextMove from '../utils/cpuNextMove';
 
 const mapStateToProps = store => ({
   board: store.game.board,
   active: store.game.active,
   moves: store.game.moves,
+  turn: store.game.turn,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -30,6 +32,10 @@ class BoardContainer extends React.Component {
     if (this.props.active && this.props.moves >= 3) {
       this.props.checkForWinner();
       this.props.checkForDraw();
+    }
+    if (this.props.turn === 'X') {
+      const index = cpuNextMove(this.props.board);
+      this.props.placeMove(index);
     }
   }
 
