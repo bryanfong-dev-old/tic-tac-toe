@@ -51,7 +51,6 @@ describe('Utility Functions', () => {
       expect(cpuNextMove(['O', 'X', '', 'O', 'X', '', '', '', ''])).toBe(7);
       expect(cpuNextMove(['', 'O', '', 'O', '', 'O', 'X', 'X', ''])).toBe(8);
     })
-
   })
 
 

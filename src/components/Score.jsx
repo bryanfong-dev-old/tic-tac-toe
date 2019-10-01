@@ -11,9 +11,9 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 const Score = ({ player, score }) => (
-  <div>
-    <h2>{player} : {score}</h2>
-  </div>
+  <h2>
+    {player} : {score}
+  </h2>
 )
 
 Score.propTypes = {
