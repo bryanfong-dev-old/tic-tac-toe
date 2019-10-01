@@ -56,7 +56,6 @@ const gameReducer = (state = initialState, action) => {
         return state;
       }
 
-
     case types.CHECK_FOR_DRAW:
       if (state.moves === 9 && state.winner === '') {
         return { ...state, winner: "Tie", active: false }

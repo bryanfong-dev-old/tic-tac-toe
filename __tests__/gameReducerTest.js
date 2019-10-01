@@ -179,7 +179,6 @@ describe('Game Reducers', () => {
     it('should not change state if no winner', () => {
       expect(gameReducer(state, action)).toEqual(state);
     })
-
   })
 
   describe('CHECK FOR DRAW', () => {
