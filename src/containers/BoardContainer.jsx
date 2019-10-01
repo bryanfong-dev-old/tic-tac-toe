@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import Square from '../components/Square';
 import PropTypes from 'prop-types';
-import cpuNextMove from '../utils/cpuNextMove';
+import cpuNextMove from '../utils/cpuNextMove'; '
 
 const mapStateToProps = store => ({
   board: store.game.board,
@@ -35,7 +35,6 @@ class BoardContainer extends React.Component {
     }
     if (this.props.turn === 'X') {
       const index = cpuNextMove(this.props.board);
-      console.log(index);
       this.props.placeMarker(index);
     }
   }
