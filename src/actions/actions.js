@@ -10,7 +10,7 @@
 import * as types from './actionTypes';
 
 export const placeMarker = (index) => ({
-  type: types.PLACE_MARKET,
+  type: types.PLACE_MARKER,
   payload: index,
 })
 

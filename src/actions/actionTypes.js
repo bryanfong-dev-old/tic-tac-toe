@@ -7,7 +7,7 @@
  * ************************************
  */
 
-export const PLACE_MARKET = "PLACE_MARKET";
+export const PLACE_MARKER = "PLACE_MARKER";
 export const CHECK_FOR_WINNER = "CHECK_FOR_WINNER";
 export const CHECK_FOR_DRAW = "CHECK_FOR_DRAW";
 export const NEW_GAME = "NEW_GAME";

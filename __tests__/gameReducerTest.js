@@ -27,4 +27,24 @@ describe('Game Reducers', () => {
       expect(gameReducer(state, action)).toBe(state);
     });
   });
+
+  describe('PLACE MARKER - PLAYERS TURN', () => {
+    const action = {
+      type: 'PLACE_MARKER',
+      payload: 0,
+    }
+
+    it('should change turn to X', () => {
+      const { turn } = gameReducer(state, action)
+      expect(turn).toEqual('X')
+    })
+
+    it('should add an O marker to the zeroth index', () => {
+      const { board } = gameReducer(state, action)
+      expect(board).toEqual(['O', '', '', '', '', '', '', '', ''])
+    })
+
+
+  })
+
 })
