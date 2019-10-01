@@ -44,8 +44,8 @@ class BoardContainer extends React.Component {
   }
 
   render({ board, placeMarker } = this.props) {
-    const boxes = board.map((val, index) =>
-      <Square placeMarker={placeMarker} key={index} index={index} val={val} />
+    const boxes = board.map((marker, index) =>
+      <Square placeMarker={placeMarker} key={index} index={index} marker={marker} />
     )
 
     return (

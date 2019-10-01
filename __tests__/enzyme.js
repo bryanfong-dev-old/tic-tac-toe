@@ -12,7 +12,7 @@ describe('React Enzyme Tests', () => {
     let placeMarker;
 
     const props = {
-      val: 'X',
+      marker: 'X',
       index: 4,
       placeMarker: { placeMarker }
     }
