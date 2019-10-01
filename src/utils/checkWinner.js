@@ -30,7 +30,7 @@ function checkWinner(board) {
       }
     }
   }
-  return;
+  return false;
 }
 
 export default checkWinner;

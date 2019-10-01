@@ -26,6 +26,7 @@ function findAvailSpots(board) {
 // If none, then it will pick a random empty space for its next move.
 function cpuNextMove(board) {
   const spots = findAvailSpots(board);
+  console.log(spots);
   let win = [];
   let block = [];
 
@@ -37,9 +38,14 @@ function cpuNextMove(board) {
     if (checkWinner(copy) === 'O') block.push(spots[i]);
   }
 
+  console.log(win);
+  console.log(block)
+
   if (win.length > 0) return win[0];
-  else if (block.length > 0) return block[0]
-  else return spots[Math.round(Math.random() * spots.length)];
+  else if (block.length > 0) return block[0];
+
+  const index = Math.round(Math.random() * spots.length);
+  return spots[index];
 }
 
 export default cpuNextMove;

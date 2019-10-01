@@ -35,6 +35,7 @@ class BoardContainer extends React.Component {
     }
     if (this.props.turn === 'X') {
       const index = cpuNextMove(this.props.board);
+      console.log(index);
       this.props.placeMove(index);
     }
   }
