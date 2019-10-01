@@ -10,7 +10,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import Box from '../components/Box';
+import Square from '../components/Square';
 import PropTypes from 'prop-types';
 import cpuNextMove from '../utils/cpuNextMove';
 
@@ -41,7 +41,7 @@ class BoardContainer extends React.Component {
 
   render({ board, placeMove } = this.props) {
     const boxes = board.map((val, index) =>
-      <Box placeMove={placeMove} key={index} index={index} val={val} />
+      <Square placeMove={placeMove} key={index} index={index} val={val} />
     )
 
     return (
