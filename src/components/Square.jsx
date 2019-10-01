@@ -10,8 +10,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const Square = ({ val, index, placeMove }) => (
-  <button className="box" index={index} onClick={() => placeMove(index)}>
+const Square = ({ val, index, placeMarker }) => (
+  <button className="box" index={index} onClick={() => placeMarker(index)}>
     {val}
   </button>
 )
@@ -19,7 +19,7 @@ const Square = ({ val, index, placeMove }) => (
 Square.propTypes = {
   val: PropTypes.string,
   index: PropTypes.number,
-  placeMove: PropTypes.func,
+  placeMarker: PropTypes.func,
 }
 
 export default Square;

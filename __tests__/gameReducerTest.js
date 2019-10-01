@@ -27,5 +27,4 @@ describe('Game Reducers', () => {
       expect(gameReducer(state, action)).toBe(state);
     });
   });
-
 })

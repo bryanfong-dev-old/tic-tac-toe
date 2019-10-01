@@ -9,8 +9,8 @@
 
 import * as types from './actionTypes';
 
-export const placeMove = (index) => ({
-  type: types.PLACE_MOVE,
+export const placeMarker = (index) => ({
+  type: types.PLACE_MARKET,
   payload: index,
 })
 

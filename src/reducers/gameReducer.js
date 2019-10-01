@@ -34,7 +34,7 @@ const gameReducer = (state = initialState, action) => {
       newState.moves = 0;
       return newState;
 
-    case types.PLACE_MOVE:
+    case types.PLACE_MARKET:
       newState = JSON.parse(JSON.stringify(state));
       index = action.payload;
       if (newState.board[index] === '' && state.active) {

@@ -22,7 +22,7 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  placeMove: (index) => dispatch(actions.placeMove(index)),
+  placeMarker: (index) => dispatch(actions.placeMarker(index)),
   checkForWinner: () => dispatch(actions.checkForWinner()),
   checkForDraw: () => dispatch(actions.checkForDraw()),
 })
@@ -36,13 +36,13 @@ class BoardContainer extends React.Component {
     if (this.props.turn === 'X') {
       const index = cpuNextMove(this.props.board);
       console.log(index);
-      this.props.placeMove(index);
+      this.props.placeMarker(index);
     }
   }
 
-  render({ board, placeMove } = this.props) {
+  render({ board, placeMarker } = this.props) {
     const boxes = board.map((val, index) =>
-      <Square placeMove={placeMove} key={index} index={index} val={val} />
+      <Square placeMarker={placeMarker} key={index} index={index} val={val} />
     )
 
     return (
@@ -58,7 +58,7 @@ BoardContainer.propTypes = {
   active: PropTypes.bool,
   moves: PropTypes.number,
   turn: PropTypes.string,
-  placeMove: PropTypes.func,
+  placeMarker: PropTypes.func,
   checkForWinner: PropTypes.func,
   checkForDraw: PropTypes.func,
 }
