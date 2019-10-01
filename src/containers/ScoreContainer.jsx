@@ -33,6 +33,7 @@ class ScoreContainer extends React.Component {
     return (
       <div id="game-info">
         <div id="message">
+          {/* conditional rendering depending on the value of winner */}
           {winner === "X" && <GameMessage message="X Wins!" />}
           {winner === "O" && <GameMessage message="O Wins!" />}
           {winner === "Tie" && <GameMessage message="Tie Game!" />}
@@ -42,6 +43,7 @@ class ScoreContainer extends React.Component {
           <Score player="P1" score={p1} />
           <Score player="CPU" score={cpu} />
         </div>
+        {/* conditional rendering for replay button to appear when game is over */}
         {winner !== "" && <Button text="Play Again" func={newGame} />}
       </div>
     );
@@ -55,6 +57,5 @@ ScoreContainer.propTypes = {
   turn: PropTypes.string,
   newGame: PropTypes.func,
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreContainer);
