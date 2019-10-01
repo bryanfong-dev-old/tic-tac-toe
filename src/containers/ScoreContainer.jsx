@@ -53,7 +53,7 @@ ScoreContainer.propTypes = {
   cpu: PropTypes.number,
   winner: PropTypes.string,
   turn: PropTypes.string,
-  newgame: PropTypes.func,
+  newGame: PropTypes.func,
 }
 
 

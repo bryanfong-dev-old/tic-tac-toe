@@ -56,6 +56,7 @@ BoardContainer.propTypes = {
   board: PropTypes.array,
   active: PropTypes.bool,
   moves: PropTypes.number,
+  turn: PropTypes.string,
   placeMove: PropTypes.func,
   checkForWinner: PropTypes.func,
   checkForDraw: PropTypes.func,

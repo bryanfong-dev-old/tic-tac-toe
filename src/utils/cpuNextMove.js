@@ -2,11 +2,10 @@
  * ************************************
  *
  * @module cpuNextMove
- * @description custom algo that finds all available moves and checks for if for next move wins for cpu and player. if none, the cpu will pick a random empty spot
+ * @description custom algo that finds the CPUs next month
  *
  * ************************************
  */
-
 
 import checkWinner from './checkWinner';
 
@@ -17,17 +16,27 @@ function findAvailSpots(board) {
   }, [])
 }
 
+
+// This custom algo finds all empty spaces
+// First, it will find all of the winning moves
+// Then, it will find moves that it needs to block
+// If none, then it will pick a random empty space for its next move.
 function cpuNextMove(board, player) {
   const spots = findAvailSpots(board);
-  console.log(spots)
+  let win = [];
+  let block = [];
+
   for (let i = 0; i < spots.length; i++) {
     let copy = JSON.parse(JSON.stringify(board));
     copy[spots[i]] = 'X';
-    if (checkWinner(copy) === 'X') return spots[i]
+    if (checkWinner(copy) === 'X') win.push(spots[i]);
     copy[spots[i]] = 'O';
-    if (checkWinner(copy) === 'O') return spots[i]
+    if (checkWinner(copy) === 'O') block.push(spots[i]);
   }
-  return spots[Math.round(Math.random() * spots.length)];
+
+  if (win.length > 0) return win[0];
+  else if (block.length > 0) return block[0]
+  else return spots[Math.round(Math.random() * spots.length)];
 }
 
 export default cpuNextMove;
