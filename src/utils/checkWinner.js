@@ -3,6 +3,9 @@
  *
  * @module checkWinner
  * @description helper function to check if there is a winner
+ * 
+ * @param {array} board - takes the board an argument  
+ * @return {string or undefined} Either X , O or Undefined
  *
  * ************************************
  */

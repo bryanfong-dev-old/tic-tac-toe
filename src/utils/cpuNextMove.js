@@ -3,12 +3,16 @@
  *
  * @module cpuNextMove
  * @description custom algo that finds the CPUs next month
+ * @param {array} board - takes the board an argument  
+ * @return {number} index for the next move
  *
  * ************************************
  */
 
 import checkWinner from './checkWinner';
 
+//returns an array with the empty indexes as values
+//spots that are filled will be skipped.
 function findAvailSpots(board) {
   return board.reduce((acc, curr, index) => {
     if (curr === '') acc.push(index);
@@ -16,12 +20,11 @@ function findAvailSpots(board) {
   }, [])
 }
 
-
 // This custom algo finds all empty spaces
 // First, it will find all of the winning moves
 // Then, it will find moves that it needs to block
 // If none, then it will pick a random empty space for its next move.
-function cpuNextMove(board, player) {
+function cpuNextMove(board) {
   const spots = findAvailSpots(board);
   let win = [];
   let block = [];
