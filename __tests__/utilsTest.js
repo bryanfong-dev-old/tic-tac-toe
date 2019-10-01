@@ -1,4 +1,5 @@
 import checkWinner from '../src/utils/checkWinner';
+import cpuNextMove from '../src/utils/cpuNextMove';
 
 describe('Utility Functions', () => {
 
@@ -24,7 +25,34 @@ describe('Utility Functions', () => {
       expect(checkWinner(['O', '', 'X', 'O', 'X', 'X', 'O', '', ''])).toBe('O');
       expect(checkWinner(['O', 'O', '', '', 'O', '', 'X', 'X', 'O'])).toBe('O');
     })
+  })
+
+  describe('CPU Next Move Function', () => {
+    it('should return the index to block player from winning', () => {
+      expect(cpuNextMove(['O', '', 'O', '', '', '', '', '', ''])).toBe(1);
+      expect(cpuNextMove(['', 'O', '', 'O', '', 'O', '', '', ''])).toBe(4);
+      expect(cpuNextMove(['O', '', '', 'O', '', '', '', '', ''])).toBe(6);
+      expect(cpuNextMove(['O', '', '', '', 'O', '', '', '', ''])).toBe(8);
+      expect(cpuNextMove(['O', 'X', 'O', '', '', 'O', '', '', ''])).toBe(8);
+    })
+
+    it('should return the index return the winning slot', () => {
+      expect(cpuNextMove(['', 'X', 'X', '', '', '', '', '', ''])).toBe(0);
+      expect(cpuNextMove(['', '', '', '', 'X', '', '', '', 'X'])).toBe(0);
+      expect(cpuNextMove(['', '', '', '', 'X', 'X', '', '', ''])).toBe(3);
+      expect(cpuNextMove(['', 'X', '', '', 'X', '', '', '', ''])).toBe(7);
+      expect(cpuNextMove(['X', 'O', 'X', '', '', 'X', '', '', ''])).toBe(8);
+    })
+
+    it('should win instead of blocking the player if possible', () => {
+      expect(cpuNextMove(['O', 'X', 'O', '', '', 'O', '', 'X', ''])).toBe(4);
+      expect(cpuNextMove(['O', '', 'O', 'X', 'X', '', '', '', ''])).toBe(5);
+      expect(cpuNextMove(['O', '', 'X', '', 'O', '', '', '', 'X'])).toBe(5);
+      expect(cpuNextMove(['O', 'X', '', 'O', 'X', '', '', '', ''])).toBe(7);
+      expect(cpuNextMove(['', 'O', '', 'O', '', 'O', 'X', 'X', ''])).toBe(8);
+    })
 
   })
+
 
 })
