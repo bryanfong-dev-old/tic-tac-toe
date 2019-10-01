@@ -6,6 +6,6 @@
   ],
   "presets": [
     "@babel/preset-env",
-    "nano-react-app",
+    "nano-react-app"
   ]
 }

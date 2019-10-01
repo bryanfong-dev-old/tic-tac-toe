@@ -234,7 +234,5 @@ describe('Game Reducers', () => {
       expect(p1_score).toBe(oldp1Score);
       expect(cpu_score).toBe(oldcpuScore);
     })
-
-
   })
 })

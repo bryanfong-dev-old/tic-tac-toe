@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "tic-tac-toe",
   "version": "0.1.0",
   "description": "",
   "scripts": {
@@ -26,7 +26,6 @@
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0",
     "jest": "^24.9.0",
     "parcel-bundler": "^1.12.3"
   }
