@@ -1,7 +1,7 @@
 /**
  * ************************************
  *
- * @module  GameMessage
+ * @module  GameMessageComponent
  * @description presentation component that displays which player wins or tie
  *
  * ************************************

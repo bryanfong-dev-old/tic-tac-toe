@@ -1,7 +1,7 @@
 /**
  * ************************************
  *
- * @module  Score
+ * @module  ScoreComponent
  * @description presentation component that displays the scores for both players
  *
  * ************************************

@@ -1,6 +1,5 @@
 import gameReducer from '../src/reducers/gameReducer';
 
-
 describe('Game Reducers', () => {
   let state;
 

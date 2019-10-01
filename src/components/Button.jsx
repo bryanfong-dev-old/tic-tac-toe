@@ -1,7 +1,7 @@
 /**
  * ************************************
  *
- * @module  Button
+ * @module  ButtonComponent
  * @description reusable button component that takes in a parameter and function
  *
  * ************************************
