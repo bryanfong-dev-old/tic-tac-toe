@@ -1,5 +1,5 @@
 import gameReducer from '../src/reducers/gameReducer';
-import checkWinner from '../src/utils/checkWinner';
+
 
 describe('Game Reducers', () => {
   let state;
@@ -123,35 +123,64 @@ describe('Game Reducers', () => {
     })
   })
 
-  describe('CHECK FOR WINNER', () => {
-
+  describe('CHECK FOR WINNER - CPU', () => {
     const action = {
-      type: 'CHECK_FOR_WINNER'
+      type: 'DECLARE_WINNER',
+      payload: 'X'
     }
 
-    it('should not return any winner', () => {
-      const { winner } = gameReducer(state, action)
-      expect(winner).toBe('');
-    })
-
-    state = {
-      board: ['X', 'X', 'X', '', '', '', '', '', ''],
-    }
-
-    xit('should set winner to X', () => {
+    it('should set the winner to be X', () => {
       const { winner } = gameReducer(state, action)
       expect(winner).toBe('X');
     })
 
-    state = {
-      board: ['', 'X', 'X', 'X', '', '', '', '', ''],
+    it('should increase CPU score by 1 if X wins', () => {
+      const oldcpuScore = state.cpu_score;
+      const { cpu_score } = gameReducer(state, action)
+      expect(cpu_score).toBe(oldcpuScore + 1);
+    })
+
+    it('should set game to inactive when X wins', () => {
+      const { active } = gameReducer(state, action)
+      expect(active).toBe(false);
+    })
+
+  });
+
+  describe('CHECK FOR WINNER - PLAYER', () => {
+    const action = {
+      type: 'DECLARE_WINNER',
+      payload: 'O'
     }
 
-    it('should not set the winner to X', () => {
+    it('should set the winner to be O', () => {
       const { winner } = gameReducer(state, action)
-      expect(winner).toBe('');
+      expect(winner).toBe('O');
+    })
+
+    it('should increase CPU score by 1 if O wins', () => {
+      const oldp1Score = state.p1_score;
+      const { p1_score } = gameReducer(state, action)
+      expect(p1_score).toBe(oldp1Score + 1);
+    })
+
+    it('should set game to inactive when O wins', () => {
+      const { active } = gameReducer(state, action)
+      expect(active).toBe(false);
     })
   });
+
+  describe('CHECK FOR DRAW', () => {
+    const action = {
+      type: 'DECLARE_WINNER',
+      payload: ''
+    }
+
+    it('should not change state if no winner', () => {
+      expect(gameReducer(state, action)).toEqual(state);
+    })
+
+  })
 
   describe('CHECK FOR DRAW', () => {
     beforeEach(() => {

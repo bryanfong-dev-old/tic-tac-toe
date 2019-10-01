@@ -46,16 +46,16 @@ const gameReducer = (state = initialState, action) => {
         return state;
       }
 
-    case types.CHECK_FOR_WINNER:
-      if (checkWinner(state.board)) {
-        if (checkWinner(state.board) === "X") {
-          return { ...state, winner: "X", active: false, cpu_score: state.cpu_score + 1 }
-        } else if (checkWinner(state.board) === "O") {
-          return { ...state, winner: "O", active: false, p1_score: state.p1_score + 1 }
-        }
+    case types.DECLARE_WINNER:
+      const winner = action.payload;
+      if (winner === "X") {
+        return { ...state, winner: "X", active: false, cpu_score: state.cpu_score + 1 }
+      } else if (winner === "O") {
+        return { ...state, winner: "O", active: false, p1_score: state.p1_score + 1 }
       } else {
         return state;
       }
+
 
     case types.CHECK_FOR_DRAW:
       if (state.moves === 9 && state.winner === '') {

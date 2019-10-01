@@ -14,8 +14,9 @@ export const placeMarker = (index) => ({
   payload: index,
 })
 
-export const checkForWinner = () => ({
-  type: types.CHECK_FOR_WINNER,
+export const declareWinner = (winner) => ({
+  type: types.DECLARE_WINNER,
+  payload: winner,
 })
 
 export const checkForDraw = () => ({

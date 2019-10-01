@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import Square from '../components/Square';
 import PropTypes from 'prop-types';
-import cpuNextMove from '../utils/cpuNextMove'; '
+import cpuNextMove from '../utils/cpuNextMove';
+import checkWinner from '../utils/checkWinner';
 
 const mapStateToProps = store => ({
   board: store.game.board,
@@ -23,14 +24,17 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   placeMarker: (index) => dispatch(actions.placeMarker(index)),
-  checkForWinner: () => dispatch(actions.checkForWinner()),
+  declareWinner: (winner) => dispatch(actions.declareWinner(winner)),
   checkForDraw: () => dispatch(actions.checkForDraw()),
 })
 
 class BoardContainer extends React.Component {
   componentDidUpdate() {
     if (this.props.active && this.props.moves >= 3) {
-      this.props.checkForWinner();
+      const winner = checkWinner(this.props.board)
+      this.props.declareWinner(winner);
+    }
+    if (this.props.moves === 9) {
       this.props.checkForDraw();
     }
     if (this.props.turn === 'X') {
@@ -58,7 +62,7 @@ BoardContainer.propTypes = {
   moves: PropTypes.number,
   turn: PropTypes.string,
   placeMarker: PropTypes.func,
-  checkForWinner: PropTypes.func,
+  declareWinner: PropTypes.func,
   checkForDraw: PropTypes.func,
 }
 
