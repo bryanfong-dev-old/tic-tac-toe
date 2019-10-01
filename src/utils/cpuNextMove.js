@@ -39,8 +39,9 @@ function cpuNextMove(board) {
 
   if (win.length > 0) return win[0];
   else if (block.length > 0) return block[0];
-
-  const index = Math.round(Math.random() * spots.length);
+  //place in the middle slot if it is empty as its first move (more challenging)
+  if (spots.includes(4)) return 4;
+  const index = Math.floor(Math.random() * spots.length);
   return spots[index];
 }
 
