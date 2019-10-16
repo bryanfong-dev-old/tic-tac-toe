@@ -28,6 +28,12 @@ describe('Utility Functions', () => {
   })
 
   describe('CPU Next Move Function', () => {
+    it('should place the first move on square 4 if it is empty', () => {
+      expect(cpuNextMove(['', '', '', '', '', '', '', '', ''])).toBe(4);
+      expect(cpuNextMove(['O', '', '', '', '', '', '', '', ''])).toBe(4);
+      expect(cpuNextMove(['', 'O', '', '', '', '', '', '', ''])).toBe(4);
+    })
+
     it('should return the index to block player from winning', () => {
       expect(cpuNextMove(['O', '', 'O', '', '', '', '', '', ''])).toBe(1);
       expect(cpuNextMove(['', 'O', '', 'O', '', 'O', '', '', ''])).toBe(4);
